@@ -1,7 +1,13 @@
+import Todo from './Todo.js';
 
 function App() {
-  return ( <div>Hello</div>
-    
+  return ( 
+      <div>
+        <h1>My Todos</h1>
+        <Todo />
+        <Todo />
+        <Todo />
+      </div>    
   );
 }
 
