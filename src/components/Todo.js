@@ -22,8 +22,12 @@ function Todo(props) {
     // Switch to a different state where modal is open.
     setModalIsOpen(true);
   }
+
+  function closeModalHandler() {
+    setModalIsOpen(false);
+  }
   // { modalIsOpen ? <Modal /> : null } renders content conditionally with ternary operator
-  // { modalIsOpen && <Modal /> } In JS, if both values are true, the second will be returned. Therefore, we can use this instead of the above.
+  // { modalIsOpen && <Modal /> } In JS, if both values are true, the second will be returned, so we can use this instead of the above.
   return (
     <div className="card">
       <h2>{props.text}</h2>
@@ -32,8 +36,10 @@ function Todo(props) {
           Delete
         </button>
       </div>
-      {modalIsOpen && <Modal />}
-      {modalIsOpen && <Backdrop />}
+      {modalIsOpen && (
+        <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+      )}
+      {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
     </div>
   );
 }
